@@ -4,6 +4,8 @@ import pandas as pd
 import pandasql as ps
 from datetime import datetime
 
+# 8.265 inches outer diameter
+
 def pack_mass(cellData, sysVoltage, sysPower):
     massResults = np.empty((len(cellData), 2), dtype=object)
     volumeResults = np.zeros(len(cellData))

@@ -1,5 +1,5 @@
 ### update battery selection excel sheet with volume data ###
-
+# 8.265 inches outer diameter
 from math import ceil
 import pandas as pd
 
