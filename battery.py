@@ -10,7 +10,7 @@ import glob
 # 8.265 inches outer diameter
 
 def pack_mass(cellData, sysVoltage, sysPower):
-    massResults = np.empty((len(cellData), 8), dtype=object)  # Update shape to match number of elements being stored
+    massResults = np.empty((len(cellData), 7), dtype=object)  # Update shape to match number of elements being stored
     volumeResults = np.zeros(len(cellData))
     for index, row in cellData.iterrows():
         cellVoltage = row['Voltage(V)']
@@ -43,16 +43,16 @@ def pack_mass(cellData, sysVoltage, sysPower):
         total_volume = square_side ** 2 * stack_height
         
         # Store results
-        massResults[index] = (cellName, mass, cells_per_square, stacks_needed, stack_height, total_volume, cells, cellCurrentDrawn / cellCurrent)
+        massResults[index] = (cellName, mass, cellWidth, cellLength, cellThickness, cells, cellCurrentDrawn / cellCurrent)
     
     minResult = min(massResults, key=lambda x: x[1])
     with open(f"./reports/{sysVoltage}V_{sysPower}W_Report", "w") as f:
         for i in range(len(massResults)):
             if(massResults[i][1] < (8 / 0.00220462)):
-                f.write(f"{massResults[i][0]}, Mass : {massResults[i][1] * 0.00220462} lbs, Number of Cells: {massResults[i][6]}, % Max Current: {massResults[i][7]}\n") 
+                f.write(f"{massResults[i][0]}, Mass : {massResults[i][1] * 0.00220462} lbs, Number of Cells: {massResults[i][5]}, % Max Current: {massResults[i][6]}\n, Volume: {massResults[i][2] * massResults[i][3] * massResults[i][4] * massResults[i][5]} in^3\n") 
      
     with open(f"./summaryreports/SummaryReport_{sysPower}", "a") as f:
-        f.write(f"Voltage: {sysVoltage}, {minResult[0]}, Mass : {minResult[1] * 0.00220462} lbs, Number of Cells: {minResult[6]}, % Max Current: {minResult[7]}\n") 
+        f.write(f"Voltage: {sysVoltage}, {minResult[0]}, Mass : {minResult[1] * 0.00220462} lbs, Number of Cells: {minResult[5]}, % Max Current: {minResult[6]}, Volume: {minResult[2] * minResult[3] * minResult[4] * minResult[5]} in^3\n") 
         
         
         
@@ -83,7 +83,7 @@ def main():
             print(f"Error deleting {file}: {e}")
         
     
-    for sysPower in range(12000, 22000, 1000):
+    for sysPower in range(10000, 25000, 1000):
         
         cellData = pd.read_excel(inputs_path, sheet_name='Cell Options')
         system_voltages = list(range(100, 250, 10))  # System voltages from 150V to 290V, in increments of 10V        
