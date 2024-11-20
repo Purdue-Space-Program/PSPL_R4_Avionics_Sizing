@@ -1,7 +1,6 @@
 import math
 import numpy as np
 import pandas as pd
-import pandasql as ps
 from datetime import datetime
 import os
 import glob
