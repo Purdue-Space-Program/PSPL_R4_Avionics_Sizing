@@ -1,5 +1,12 @@
-# Adding to the repo
-## Making Changes
+# PSP Liquids: Rocket 4 Sizing
+
+## Sizing Point-of-Contact(s)
+
+ - Battery: Charlie Schoettle
+ - Wiring:  Jeremy Shinn
+
+## Adding to the repo
+### Making Changes
 - If you estimate a change will not take you more than one day, it is okay to edit the code without making a new branch
   Just make sure that people are aware of this and push your changes when you finish
   
