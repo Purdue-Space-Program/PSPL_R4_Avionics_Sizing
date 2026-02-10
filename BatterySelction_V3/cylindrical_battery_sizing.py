@@ -3,9 +3,9 @@ import numpy as np
 import pandas as pd
 
 # CONSTRAINTS
-OUTER_TANK_DIAMETER_INCHES  = 8.265 # inches
-TANK_WALL_THICKNESS_INCHES  = 0.148 # inches
-MID_AIRFRAME_HEIGHT_INCHES  = 8 # inches, approximately
+OUTER_TANK_DIAMETER_INCHES  = 8.854 # inches
+TANK_WALL_THICKNESS_INCHES  = 0 # inches
+MID_AIRFRAME_HEIGHT_INCHES  = 19.32 # inches, approximately
 LOX_TXTUBE_VOLUME_REDUCTION = 0.2 # constant
 TARGET_POWER = 20000 # Watts
 TARGET_VOLTAGE = 100 # Volts
